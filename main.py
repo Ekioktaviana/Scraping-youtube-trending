@@ -66,16 +66,7 @@ def get_tags(tags_list):
 
 def get_videos(items):
     lines = []
-    # no = 0;
-
     for video in items:
-
-        # no += 1;
-        # if "statistics" not in video:
-        #     continue
-
-        # video_id = prepare_feature(video['id'])
-
 
         # Snippet and statistics are sub-dicts of video, containing the most useful info
         snippet = video['snippet']
@@ -83,14 +74,12 @@ def get_videos(items):
         # This list contains all of the features in snippet that are 1 deep and require no special processing
         features = [prepare_feature(snippet.get(feature, "")) for feature in snippet_features]
 
-
         # Compiles all of the various bits of info into one consistently formatted line
         line = features
         # print(features)
         lines.append(",".join(line))
 
         # print(line)
-
 
         scrap_db = pymysql.connect(host='127.0.0.1', user='root', password='', port=3306,
                                    db='scraping_trending_youtube',
