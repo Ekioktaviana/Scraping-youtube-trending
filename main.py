@@ -46,7 +46,9 @@ def prepare_feature(feature):
 
 
 def api_request(page_token, country_code):
-    request_url = f"https://www.googleapis.com/youtube/v3/videos?part=id,statistics,snippet{page_token}chart=mostPopular&regionCode={country_code}&maxResults=50&key=AIzaSyCdiHX3iHX_8UCSXp1SuaK10abCNC5M3Zs"
+    request_url = f"https://www.googleapis.com/youtube/v3/videos?part=id,statistics,snippet{page_token}chart=mostPopular&regionCode={country_code}&maxResults=50&key="
+#   // Anda perlu memasukan Api Key kedalam key=
+
     request = requests.get(request_url)
     if request.status_code == 429:
         print("Temp-Banned due to excess requests, please wait and continue later")
